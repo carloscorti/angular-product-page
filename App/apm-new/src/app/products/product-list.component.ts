@@ -13,6 +13,7 @@ export class ProductListComponent {
   productImageMargin: number = 2;
   showImage: boolean = false;
   showImageButtonText: string = SHOW_IMAGE_TEXT.visible;
+  filterInputText: string = "cart";
   products: any[] = [
     {
       productId: 2,
