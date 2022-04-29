@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
+import { SHOW_IMAGE_TEXT } from "./product-list.component.constants";
 
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
   // styleUrls: ['./app.component.css']
 })
+
 export class ProductListComponent {
   productListHeader: string = 'Product List';
   productImageWidth: number = 50;
   productImageMargin: number = 2;
+  showImage: boolean = false;
+  showImageButtonText: string = SHOW_IMAGE_TEXT.visible;
   products: any[] = [
     {
       productId: 2,
@@ -31,4 +35,13 @@ export class ProductListComponent {
       imageUrl: 'assets/images/hammer.png',
     },
   ];
+
+  toggleImageView(): void {
+    this.setShowImageButtonText();
+    this.showImage = !this.showImage;
+  }
+
+  setShowImageButtonText(): void {
+    this.showImageButtonText = this.showImage ? SHOW_IMAGE_TEXT.visible : SHOW_IMAGE_TEXT.hidden;
+  }
 }
