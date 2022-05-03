@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SHOW_IMAGE_TEXT } from "./product-list.component.constants";
 import { IProduct } from "./product-list.component.types";
 
@@ -8,7 +8,7 @@ import { IProduct } from "./product-list.component.types";
   styleUrls: ['./product-list.component.css']
 })
 
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   productListHeader: string = 'Product List';
   productImageWidth: number = 50;
   productImageMargin: number = 2;
@@ -37,6 +37,10 @@ export class ProductListComponent {
       imageUrl: 'assets/images/hammer.png',
     },
   ];
+
+  ngOnInit() {
+    console.log("From ngOnInit: product-list.component intialized")
+  }
 
   toggleImageView(): void {
     this.setShowImageButtonText();
