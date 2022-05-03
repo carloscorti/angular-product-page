@@ -5,7 +5,7 @@ import { IProduct } from "./product-list.component.types";
 @Component({
   selector: 'pm-products',
   templateUrl: './product-list.component.html',
-  // styleUrls: ['./app.component.css']
+  styleUrls: ['./product-list.component.css']
 })
 
 export class ProductListComponent {
