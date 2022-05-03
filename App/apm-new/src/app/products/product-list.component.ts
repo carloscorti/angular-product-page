@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SHOW_IMAGE_TEXT } from "./product-list.component.constants";
+import { IProduct } from "./product-list.component.types";
 
 @Component({
   selector: 'pm-products',
@@ -14,7 +15,7 @@ export class ProductListComponent {
   showImage: boolean = false;
   showImageButtonText: string = SHOW_IMAGE_TEXT.visible;
   filterInputText: string = "cart";
-  products: any[] = [
+  products: IProduct[] = [
     {
       productId: 2,
       productName: 'Garden Cart',

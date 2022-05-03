@@ -1,6 +1,17 @@
-interface ShowImageTextConstants {
+interface IShowImageTextConstants {
   visible: string,
   hidden: string
 }
 
-export { ShowImageTextConstants }
+interface IProduct {
+  productId: number,
+  productName: string,
+  productCode: string,
+  releaseDate: string,
+  description: string,
+  price: number,
+  starRating: number,
+  imageUrl: string,
+}
+
+export { IShowImageTextConstants, IProduct }

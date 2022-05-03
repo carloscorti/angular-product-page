@@ -1,6 +1,6 @@
-import { ShowImageTextConstants } from './product-list.component.types';
+import { IShowImageTextConstants } from './product-list.component.types';
 
-const SHOW_IMAGE_TEXT: ShowImageTextConstants = {
+const SHOW_IMAGE_TEXT: IShowImageTextConstants = {
   visible: "Show image",
   hidden: "Hide image"
 };
