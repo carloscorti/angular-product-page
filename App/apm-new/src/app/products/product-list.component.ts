@@ -14,7 +14,19 @@ export class ProductListComponent implements OnInit {
   productImageMargin: number = 2;
   showImage: boolean = false;
   showImageButtonText: string = SHOW_IMAGE_TEXT.visible;
-  filterInputText: string = "cart";
+  filteredProducts: IProduct[] = []
+  private _filterInputText: string = "";
+  get filterInputText(): string {
+    console.log("get _filterInputText", this._filterInputText)
+    return this._filterInputText
+  }
+  set filterInputText(newFilterInputTextValue: string) {
+    console.log("set _filterInputText: old value", this._filterInputText)
+    console.log("set _filterInputText: new value", newFilterInputTextValue)
+    this._filterInputText = newFilterInputTextValue
+
+    this.filteredProducts = this.getFilteredProductsBy(this._filterInputText)
+  }
   products: IProduct[] = [
     {
       productId: 2,
@@ -40,6 +52,8 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     console.log("From ngOnInit: product-list.component intialized")
+    this.filteredProducts = this.products
+
   }
 
   toggleImageView(): void {
@@ -49,5 +63,9 @@ export class ProductListComponent implements OnInit {
 
   setShowImageButtonText(): void {
     this.showImageButtonText = this.showImage ? SHOW_IMAGE_TEXT.visible : SHOW_IMAGE_TEXT.hidden;
+  }
+
+  getFilteredProductsBy(filterBy: string): IProduct[] {
+    return this.products.filter((item: IProduct): Boolean => item.productName.toLocaleLowerCase().includes(filterBy.toLocaleLowerCase()))
   }
 }
