@@ -52,7 +52,11 @@
           {{ product.price | customcurrency: "€":2 }} -
           {{ product.price | currency: "USD":"symbol":"1.2-2" }}
         </td>
-        <td>{{ product.starRating }}</td>
+        <!-- <td>{{ product.starRating }}</td> -->
+        <td>
+          <pm-star [rating]="product.starRating" [starWidth]="75"></pm-star>
+          <!-- <pm-star [starRaiting]="product.starRating"></pm-star> -->
+        </td>
       </tr>
     </tbody>
   </table>
