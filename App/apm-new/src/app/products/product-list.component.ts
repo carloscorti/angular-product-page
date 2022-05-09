@@ -68,4 +68,13 @@ export class ProductListComponent implements OnInit {
   getFilteredProductsBy(filterBy: string): IProduct[] {
     return this.products.filter((item: IProduct): Boolean => item.productName.toLocaleLowerCase().includes(filterBy.toLocaleLowerCase()))
   }
+
+  handleStarStatus(starStatus: string): void {
+    console.log(starStatus)
+  }
+
+  handleUpdateRating(starRating: number): void {
+    this.productListHeader = `Product List: product with ${starRating} rating clicked`
+    // console.log(starRating)
+  }
 }
