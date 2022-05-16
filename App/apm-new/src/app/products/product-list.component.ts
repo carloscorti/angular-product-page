@@ -34,8 +34,12 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit() {
     console.log("From ngOnInit: product-list.component intialized")
-    this.products = this.productService.getProducts()
-    this.filteredProducts = this.products
+    this.productService.getProducts().subscribe({
+      next: productData => {
+        this.products = productData
+        this.filteredProducts = this.products
+      }
+    })
 
   }
 
