@@ -17,6 +17,7 @@
 </div>
 
 <div class="table-responsive">
+  <p *ngIf="needErrorMessage">{{ errorUiMessage }}</p>
   <table class="table" *ngIf="products.length">
     <thead>
       <tr>

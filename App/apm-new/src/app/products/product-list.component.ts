@@ -28,6 +28,9 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.getFilteredProductsBy(this._filterInputText);
   }
   products: IProduct[] = [];
+  needErrorMessage: boolean = false;
+  errorUiMessage: string =
+    'Sorry we are having trobles here, please try later :)';
 
   constructor(private productService: ProductService) {}
 
@@ -37,6 +40,10 @@ export class ProductListComponent implements OnInit {
       next: (productData) => {
         this.products = productData;
         this.filteredProducts = this.products;
+      },
+      error: (error) => {
+        console.warn('ProductListComponent error: ', error);
+        this.needErrorMessage = true;
       },
     });
   }
