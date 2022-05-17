@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ErrorInterceptorProvider } from '../services/httpErrorImterceptor.service';
+
 import { CurrencyCustomPipe } from './pipes/currency.pipe';
 import { ProductCodeCustomPipe } from './pipes/product-code.pipe';
 
@@ -19,7 +21,7 @@ import { StarComponent } from '../shared/star/star.component';
     ProductCodeCustomPipe,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [ErrorInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
