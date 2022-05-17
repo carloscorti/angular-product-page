@@ -1,17 +1,17 @@
 interface IShowImageTextConstants {
-  visible: string,
-  hidden: string
+  visible: string;
+  hidden: string;
 }
 
 interface IProduct {
-  productId: number,
-  productName: string,
-  productCode: string,
-  releaseDate: string,
-  description: string,
-  price: number,
-  starRating: number,
-  imageUrl: string,
+  productId: number;
+  productName: string;
+  productCode: string;
+  releaseDate: string;
+  description: string;
+  price: number;
+  starRating: number;
+  imageUrl: string;
 }
 
-export { IShowImageTextConstants, IProduct }
+export { IShowImageTextConstants, IProduct };
