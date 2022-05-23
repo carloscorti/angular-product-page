@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ProductService } from 'src/services/data.service';
 import { SHOW_IMAGE_TEXT } from './product-list.component.constants';
 import { IProduct } from './product-list.component.types';
@@ -8,7 +9,7 @@ import { IProduct } from './product-list.component.types';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   productListHeader: string = 'Product List';
   productImageWidth: number = 50;
   productImageMargin: number = 2;
@@ -28,24 +29,31 @@ export class ProductListComponent implements OnInit {
     this.filteredProducts = this.getFilteredProductsBy(this._filterInputText);
   }
   products: IProduct[] = [];
+  productServiceSubscription!: Subscription;
   needErrorMessage: boolean = false;
   errorUiMessage: string =
     'Sorry we are having trobles here, please try later :)';
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('From ngOnInit: product-list.component intialized');
-    this.productService.getProducts().subscribe({
-      next: (productData) => {
-        this.products = productData;
-        this.filteredProducts = this.products;
-      },
-      error: (error) => {
-        console.warn('ProductListComponent error: ', error);
-        this.needErrorMessage = true;
-      },
-    });
+    this.productServiceSubscription = this.productService
+      .getProducts()
+      .subscribe({
+        next: (productData) => {
+          this.products = productData;
+          this.filteredProducts = this.products;
+        },
+        error: (error) => {
+          console.warn('ProductListComponent error: ', error);
+          this.needErrorMessage = true;
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.productServiceSubscription.unsubscribe();
   }
 
   toggleImageView(): void {
