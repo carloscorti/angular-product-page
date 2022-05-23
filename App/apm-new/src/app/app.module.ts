@@ -11,6 +11,7 @@ import { ProductCodeCustomPipe } from './pipes/product-code.pipe';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { StarComponent } from '../shared/star/star.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { StarComponent } from '../shared/star/star.component';
     StarComponent,
     CurrencyCustomPipe,
     ProductCodeCustomPipe,
+    ProductDetailComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [ErrorInterceptorProvider],
