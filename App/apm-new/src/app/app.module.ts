@@ -12,10 +12,12 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { StarComponent } from '../shared/star/star.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { WelcomeComponent } from './home/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    WelcomeComponent,
     ProductListComponent,
     StarComponent,
     CurrencyCustomPipe,
