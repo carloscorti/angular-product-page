@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { ErrorInterceptorProvider } from '../services/httpErrorImterceptor.service';
 
@@ -24,7 +25,17 @@ import { WelcomeComponent } from './home/welcome.component';
     ProductCodeCustomPipe,
     ProductDetailComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'products', component: ProductListComponent },
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', pathMatch: 'full', redirectTo: 'welcome' },
+      { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
+    ]),
+  ],
   providers: [ErrorInterceptorProvider],
   bootstrap: [AppComponent],
 })
