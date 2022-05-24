@@ -5,7 +5,6 @@ import { SHOW_IMAGE_TEXT } from './product-list.component.constants';
 import { IProduct } from './product-list.component.types';
 
 @Component({
-  selector: 'pm-products',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
