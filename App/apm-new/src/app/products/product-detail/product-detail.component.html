@@ -2,4 +2,68 @@
   <div class="card-header">
     {{ pageTitle }}
   </div>
+
+  <div class="card-body" *ngIf="product; else productElseBlock">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">Name:</div>
+          <div class="col-md-8">{{ product.productName }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Code:</div>
+          <div class="col-md-8">
+            {{ product.productCode | lowercase | productcode: "-" }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Description:</div>
+          <div class="col-md-8">{{ product.description }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Availability:</div>
+          <div class="col-md-8">{{ product.releaseDate }}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Price:</div>
+          <div class="col-md-8">
+            {{ product.price | customcurrency: "€":2 }} -
+            {{ product.price | currency: "USD":"symbol":"1.2-2" }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">5 Star Rating:</div>
+          <div class="col-md-8">
+            <pm-star [rating]="product.starRating" [starWidth]="75"></pm-star>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <img
+          class="center-block img-responsive"
+          [style.width.px]="200"
+          [style.margin.px]="2"
+          [src]="product.imageUrl"
+          [title]="product.productName"
+        />
+      </div>
+    </div>
+  </div>
+
+  <ng-template #productElseBlock>
+    <div class="card-body">
+      <div class="row">No product finded</div>
+    </div>
+  </ng-template>
+
+  <div class="card-footer">
+    <button
+      class="btn btn-outline-secondary"
+      style="width: 80px"
+      (click)="onClickBack()"
+    >
+      <i class="fa fa-chevron-left"></i> Back
+    </button>
+  </div>
 </div>
