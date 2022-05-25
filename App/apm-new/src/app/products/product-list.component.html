@@ -47,7 +47,13 @@
                 [style.margin.px]="productImageMargin"
               />
             </td>
-            <td>{{ product.productName }}</td>
+            <td>
+              <a
+                class="nav-link"
+                [routerLink]="['/products', product.productId]"
+                >{{ product.productName }}
+              </a>
+            </td>
             <td>{{ product.productCode | lowercase | productcode: "-" }}</td>
             <td>{{ product.releaseDate }}</td>
             <td>
