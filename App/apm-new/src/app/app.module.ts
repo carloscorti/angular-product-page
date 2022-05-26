@@ -14,7 +14,7 @@ import { ProductListComponent } from './products/product-list.component';
 import { StarComponent } from '../shared/star/star.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
-import { ProductDetailGuard } from './products/services/product-detail.guard';
+import { ProductListRouteResolver } from './products/services/porduct-list.service';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,10 @@ import { ProductDetailGuard } from './products/services/product-detail.guard';
       { path: 'products', component: ProductListComponent },
       {
         path: 'products/:id',
-        canActivate: [ProductDetailGuard],
         component: ProductDetailComponent,
+        resolve: {
+          product: ProductListRouteResolver,
+        },
       },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', pathMatch: 'full', redirectTo: 'welcome' },

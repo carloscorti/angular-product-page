@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ProductService } from 'src/services/data.service';
 import { IProduct } from '../product-list.component.types';
 
 @Component({
@@ -16,28 +15,21 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   productServiceSubscription!: Subscription;
   needErrorMessage: boolean = false;
 
-  constructor(
-    private acivatedRoute: ActivatedRoute,
-    private router: Router,
-    private productService: ProductService
-  ) {}
+  constructor(private acivatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    this.productId = Number(this.acivatedRoute.snapshot.paramMap.get('id'));
-    this.productServiceSubscription = this.productService
-      .getProductById(this.productId)
-      .subscribe({
-        next: (productData) => {
-          this.product = productData;
-          this.pageTitle = this.product
-            ? `${this.pageTitle} ${this.product.productName}`
-            : `${this.pageTitle} not found`;
-        },
-        error: (error) => {
-          console.warn('ProductDetailComponent error: ', error);
-          this.needErrorMessage = true;
-        },
-      });
+    this.productServiceSubscription = this.acivatedRoute.data.subscribe({
+      next: (productData) => {
+        this.product = productData['product'];
+        this.pageTitle = this.product
+          ? `${this.pageTitle} ${this.product.productName}`
+          : `${this.pageTitle} not found`;
+      },
+      error: (error) => {
+        console.warn('ProductDetailComponent error: ', error);
+        this.needErrorMessage = true;
+      },
+    });
   }
 
   ngOnDestroy(): void {
