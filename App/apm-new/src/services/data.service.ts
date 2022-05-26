@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../app/products/product-list.component.types';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, tap } from 'rxjs';
+import { catchError, map, Observable, tap, delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +16,7 @@ export class ProductService {
       tap((productList) => {
         console.log('product list', productList);
       }),
+      delay(2000),
       catchError((error) => {
         console.warn('ProductService getProducts error: ', error);
         throw error;

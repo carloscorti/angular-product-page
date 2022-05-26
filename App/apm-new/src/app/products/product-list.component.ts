@@ -32,6 +32,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   needErrorMessage: boolean = false;
   errorUiMessage: string =
     'Sorry we are having trobles here, please try later :)';
+  isLoading = true;
 
   constructor(private productService: ProductService) {}
 
@@ -43,6 +44,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
         next: (productData) => {
           this.products = productData;
           this.filteredProducts = this.products;
+          this.isLoading = false;
         },
         error: (error) => {
           console.warn('ProductListComponent error: ', error);
@@ -53,6 +55,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.productServiceSubscription.unsubscribe();
+    console.log('ProductListComponent destroyed');
   }
 
   toggleImageView(): void {
@@ -82,5 +85,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   handleUpdateRating(starRating: number): void {
     this.productListHeader = `Product List: product with ${starRating} rating clicked`;
     // console.log(starRating)
+  }
+
+  onProductDetailLinkClick(): void {
+    this.isLoading = true;
   }
 }

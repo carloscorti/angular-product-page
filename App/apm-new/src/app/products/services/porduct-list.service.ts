@@ -20,6 +20,7 @@ export class ProductListRouteResolver implements Resolve<IProduct | undefined> {
         }),
         catchError((error) => {
           console.warn('ProductDetailGuard error: ', error);
+          console.log('redirecting to welcome page');
           this.router.navigate(['welcone']);
           return of(undefined);
         })
