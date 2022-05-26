@@ -9,6 +9,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductListComponent } from './product-list.component';
 import { ProductsRoutes } from './products.routing';
 import { StarModule } from 'src/shared/star/star.module';
+import { ProductListRouteResolverModule } from './services/product-list.service.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,13 @@ import { StarModule } from 'src/shared/star/star.module';
     ProductCodeCustomPipe,
     ProductDetailComponent,
   ],
-  imports: [CommonModule, FormsModule, StarModule, ProductsRoutes],
+  imports: [
+    CommonModule,
+    FormsModule,
+    StarModule,
+    ProductsRoutes,
+    ProductListRouteResolverModule,
+  ],
   exports: [FormsModule, CurrencyCustomPipe, ProductCodeCustomPipe, StarModule],
 })
 export class ProductsModule {}
