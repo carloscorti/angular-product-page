@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
 import { WelcomeModule } from './welcome/welcome.module';
 
@@ -9,18 +8,16 @@ import { ErrorInterceptorProvider } from '../services/httpErrorImterceptor.servi
 
 import { AppComponent } from './app.component';
 import { ProductsModule } from './products/products.module';
+import { AppRoutes } from './app.routing';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', pathMatch: 'full', redirectTo: 'welcome' },
-      { path: '**', pathMatch: 'full', redirectTo: 'welcome' },
-    ]),
     WelcomeModule,
     ProductsModule,
+    AppRoutes,
   ],
   providers: [ErrorInterceptorProvider],
   bootstrap: [AppComponent],
