@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { StarModule } from '../shared/star/star.module';
 import { WelcomeModule } from './welcome/welcome.module';
 
 import { ErrorInterceptorProvider } from '../services/httpErrorImterceptor.service';
@@ -16,7 +15,6 @@ import { ProductsModule } from './products/products.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    StarModule,
     RouterModule.forRoot([
       { path: '', pathMatch: 'full', redirectTo: 'welcome' },
       { path: '**', pathMatch: 'full', redirectTo: 'welcome' },

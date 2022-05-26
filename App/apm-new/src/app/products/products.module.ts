@@ -18,6 +18,6 @@ import { StarModule } from 'src/shared/star/star.module';
     ProductDetailComponent,
   ],
   imports: [CommonModule, FormsModule, StarModule, ProductsRoutes],
-  exports: [FormsModule, CurrencyCustomPipe, ProductCodeCustomPipe],
+  exports: [FormsModule, CurrencyCustomPipe, ProductCodeCustomPipe, StarModule],
 })
 export class ProductsModule {}
