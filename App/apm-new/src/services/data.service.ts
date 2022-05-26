@@ -16,7 +16,7 @@ export class ProductService {
       tap((productList) => {
         console.log('product list', productList);
       }),
-      delay(2000),
+      delay(Math.random() * 2000),
       catchError((error) => {
         console.warn('ProductService getProducts error: ', error);
         throw error;
